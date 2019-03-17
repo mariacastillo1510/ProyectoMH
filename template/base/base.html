@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}SolicitudesDV{% endblock %}</title>
+
+	<!-- ========== CSS========== -->
+	{% block css %}
+	{% endblock %}
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" media="screen" >
+	<link rel="stylesheet" href="{% static 'css/all.css' %}" media="screen" >
+	<link rel="stylesheet" href="{% static 'css/animate.min.css' %}" media="screen" >
+	<link rel="stylesheet" href="{% static 'css/lobipanel.min.css' %}" media="screen" >
+	<link rel="stylesheet" href="{% static 'css/jquery.dataTables.min.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}" media="screen" >
+	
+	<script src="{% static 'js/modernizr.min.js' %}"></script>
+
+
+	<!-- ========== MODERNIZR ========== -->
+	<script src="js/modernizr/modernizr.min.js"></script>
+</head>
+{% block body %}
+<body class="top-navbar-fixed">
+	{% endblock %}
+	<div class="main-wrapper">
+		{% block topnav %}
+		<!-- ========== TOP NAVBAR ========== -->
+		<nav class="navbar top-navbar bg-white box-shadow">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="navbar-header no-padding">
+						<a class="navbar-brand" href="{% url 'Inicio' %}" style=" 
+							position: relative; 
+							top: 0em; 
+							left: 1em; 
+							font-size:23px; 
+							font-family: sans-serif;"  >
+							SolicitudesDV
+							
+						</a>
+						<span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-align-justify"></i></span>
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<i class="fa fa-ellipsis-v"></i>
+						</button>
+						<button type="button" class="navbar-toggle mobile-nav-toggle" >
+							<i class="fa fa-bars"></i>
+						</button>
+					</div>
+					<!-- /.navbar-header -->
+
+					<div class="collapse navbar-collapse" id="navbar-collapse-1">
+
+
+						<ul class="nav navbar-nav navbar-right" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+							{% if user.is_active %}
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i> <span class="badge badge-danger">0</span></a>
+								<ul class="dropdown-menu" >
+									<li><a href="#"><i class="fa fa-plus"></i> Uno</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#"><i class="fa fa-plus"></i> Uno</a></li>
+								</ul>
+							</li>
+							<!-- /.dropdown -->
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.puser.p_nombre}} {{user.puser.p_apellido}}<span class="caret"></span></a>
+								<ul class="dropdown-menu profile-dropdown">
+									<li><a href="{% url 'Usuario:EditarPerfil'%}"><i class="fa fa-user-edit"></i> Editar Perfil</a></li>
+									<li><a href="{% url 'Usuario:EditarClave'%}"><i class="fa fa-edit"></i> Editar Clave</a></li>
+									<li><a href="#"><i class="fa fa-cog"></i> Ayuda</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="{% url 'Usuario:Logout' %}" class="color-danger text-center"><i class="fa fa-sign-out"></i> Cerrar Sesión</a></li>
+								</ul>
+							</li>
+							<!-- /.dropdown -->
+							<li><a href="#" class="hidden-xs hidden-sm open-right-sidebar"><i class="fa fa-ellipsis-v"></i></a></li>
+							{% else %}
+							<li><a href="{% url 'Usuario:RegPUser' %}" style="font-family: sans-serif;">Registrarse</a></li>
+							<li><a href="{% url 'Usuario:Login' %}" style="font-family: sans-serif;">Iniciar Sesión</a></li>
+							{% endif %}
+						</ul>
+						<!-- /.nav navbar-nav navbar-right -->
+					</div>
+					<!-- /.navbar-collapse -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+		{% endblock %}
+
+		<!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+		<div class="content-wrapper">
+			<div class="content-container">
+				{% block leftnav %}
+				<!-- ========== LEFT SIDEBAR ========== -->
+				<div class="left-sidebar bg-black-300 box-shadow">
+					<div class="sidebar-content">
+
+						<div class="sidebar-nav" style="font-size:17.5px;">
+							<ul class="side-nav color-gray">
+								<li class=""><a href="{% url 'Inicio' %}"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+								<li class="has-children">
+									<a href="#" style="font-size:17.5px;"><i class="fa fa-file-signature"></i> <span>Registros</span> <i class="fa fa-angle-right arrow"></i></a>
+									<ul class="child-nav" style="font-size:14px;">
+										<li class=""><a href="{% url 'Registro:RSolicitudes' %}"><i class="fa fa-arrow-circle-right"></i> <span>Solicitud de Vivienda</span></a></li>
+										<li class=""><a href="{% url 'Registro:RCita' %}"><i class="fa fa-arrow-circle-right"></i> <span>Cita</span></a></li>
+										<li class=""><a href="#"><i class="fa fa-arrow-circle-right"></i> <span>Inspecciones</span></a></li>
+									</ul>
+								</li>
+								<li class="has-children"  style="font-size:17.5px;">
+									<a href="#"><i class="fa fa-list"></i> <span>Consultas</span> <i class="fa fa-angle-right arrow"></i></a>
+									<ul class="child-nav" style="font-size:14px;">
+										<li class=""><a href="{% url 'Consulta:ConsultarSolicitudes' %}"><i class="fa fa-arrow-circle-right"></i> <span>Solicitudes de Vivienda</span></a></li>
+										<li class=""><a href="{% url 'Consulta:ConsultarCita' %}"><i class="fa fa-arrow-circle-right"></i> <span>Cita</span></a></li>
+										<li class=""><a href="{% url 'Consulta:ConsultarSolicitante' %}"><i class="fa fa-arrow-circle-right"></i> <span>Solicitante</span></a></li>
+										<li class=""><a href="{% url 'Consulta:ConsultarTrabajador' %}"><i class="fa fa-arrow-circle-right"></i> <span>Trabajador</span></a></li>
+										<li class=""><a href="{% url 'Consulta:ConsultarInspeccion' %}"><i class="fa fa-arrow-circle-right"></i> <span>Inspeccion</span></a></li>
+									</ul>
+								</li>
+								<li class="has-children">
+									<a href="#"><i class="fa fa-chart-bar"></i> <span>Reportes</span> <i class="fa fa-angle-right arrow"></i></a>
+									<ul class="child-nav" style="font-size:14px;">
+										<li class=""><a href="#"><i class="fa fa-arrow-circle-right"></i> <span>Generales</span></a></li>
+									</ul>
+								</li>
+								<li class=""><a href="{% url 'Consulta:ConsultarAsigCargo' %}"><i class="fa fa-user"></i> <span>Asignar Cargo</span></a></li>
+
+								
+							</ul>
+							<!-- /.side-nav -->
+						</div>
+						<!-- /.sidebar-nav -->
+					</div>
+					<!-- /.sidebar-content -->
+				</div>
+				<!-- /.left-sidebar -->
+				{% endblock %}
+				<div class="main-page">
+					{% block content %}
+
+					{% endblock %}
+				</div>
+				<!-- /.main-page -->
+
+
+				<div class="right-sidebar bg-white fixed-sidebar">
+					<div class="sidebar-content">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-12">
+									<h4>Useful Sidebar <i class="fa fa-times close-icon"></i></h4>
+									<p>Code for help is added within the main page. Check for code below the example.</p>
+									<p>You can use this sidebar to help your end-users. You can enter any HTML in this sidebar.</p>
+									<p>This sidebar can be a 'fixed to top' or you can unpin it to scroll with main page.</p>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								</div>
+								<!-- /.col-md-12 -->
+
+								<div class="text-center mt-20">
+									<button type="button" class="btn btn-success btn-labeled">Purchase Now<span class="btn-label btn-label-right"><i class="fa fa-check"></i></span></button>
+								</div>
+								<!-- /.text-center -->
+							</div>
+							<!-- /.row -->
+						</div>
+						<!-- /.container-fluid -->
+					</div>
+					<!-- /.sidebar-content -->
+				</div>
+				<!-- /.right-sidebar -->
+
+			</div>
+			<!-- /.content-container -->
+		</div>
+		<!-- /.content-wrapper -->
+
+	</div>
+	<!-- /.main-wrapper -->
+
+	<!-- ========== JS ========== -->
+	<script src="{% static 'js/validaciones.js' %}"></script>
+	<script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+	<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/lobipanel.min.js' %}"></script>
+	<script src="{% static 'js/iscroll.js' %}"></script>
+	<script src="{% static 'js/pace.min.js' %}"></script>
+	<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+	<script src="{% static 'js/parsley.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+
+	{% block js %}
+	{% endblock %}
+</body>
+</html>

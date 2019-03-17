@@ -1,0 +1,92 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row page-title-div">
+		<div class="col-sm-6">
+			<h2 class="title">Consulta de Trabajadores</h2>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+	<div class="row breadcrumb-div">
+		<div class="col-sm-6">
+			<ul class="breadcrumb">
+				<li><a href="{% url 'Inicio' %}"><i class="fa fa-home"></i> Inicio</a></li>
+				<li><a href="#"><i class="fa fa-list"></i> Listados</a></li>
+				<li class="active"><i class="fa fa-arrow-circle-right"></i> Consulta de trabajadores</li>
+			</ul>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+
+	<section class="section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0">
+					<div class="panel login-box">
+						<div class="panel-heading">
+							<h6 class="tx-inverse tx-uppercase tx-bold tx-14 mg-t-80 mg-b-10">SECRETARIA</h6>
+						</div>
+						<div class="panel-body p-20">
+							<table class="table mg-b-0 table-bordered table-dark responsive nowrap">
+								<thead class="thead-colored thead-dark">
+									<tr>
+										<th class="wd-15p">Cédula</th>
+										<th class="wd-15p">Nombres</th>
+										<th class="wd-15p">Apellidos</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for dato in usuarios %}
+									<tr>
+										{% if dato.puser.cargo == "Secretaria" %}
+										<td>{{dato.username}}</td>
+										<td>{{dato.puser.p_nombre}} {% if dato.puser.s_nombre == None %} {% else %} {{dato.perfil.s_nombre}} {% endif %}</td>
+										<td>{{dato.puser.p_apellido}} {% if dato.puser.s_apellido == None %} {% else %} {{dato.puser.s_apellido}} {% endif %}</td>
+
+										{% endif %}		
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+
+						</div><!-- table-wrapper -->
+					</div>
+				</div>
+				<div class="table-wrapper">
+					<section class="section">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-12 col-md-offset-0">
+									<div class="panel login-box">
+										<div class="panel-heading">
+											<h6 class="tx-inverse tx-uppercase tx-bold tx-14 mg-t-80 mg-b-10">JEFE DE DEPARTAMENTO</h6>
+										</div>
+										<div class="panel-body p-20">
+											<table class="table mg-b-0 table-bordered table-dark responsive nowrap">
+												<thead class="thead-colored thead-dark">
+													<tr>
+														<th class="wd-15p">Cédula</th>
+														<th class="wd-15p">Nombre</th>
+														<th class="wd-15p">Apellido</th>
+													</tr>
+												</thead>
+												<tbody>
+													{% for dato in usuarios %}
+													<tr>
+														{% if dato.puser.cargo == "Jefe de Departamento" %}
+														<td>{{dato.username}}</td>
+														<td>{{dato.puser.p_nombre}} {% if dato.puser.s_nombre == None %} {% else %} {{dato.puser.s_nombre}} {% endif %}</td>
+														<td>{{dato.puser.p_apellido}} {% if dato.puser.s_apellido == None %} {% else %} {{dato.puser.s_apellido}} {% endif %}</td>
+												
+														{% endif %}
+													</tr>
+													{% endfor %}
+												</tbody>
+											</table>
+											<p></p>
+										</div><!-- table-wrapper -->
+									</div>
+									{% endblock %}

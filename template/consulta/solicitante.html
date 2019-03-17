@@ -1,0 +1,84 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row page-title-div">
+		<div class="col-sm-6">
+			<h2 class="title">Consulta de Solicitante</h2>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+	<div class="row breadcrumb-div">
+		<div class="col-sm-6">
+			<ul class="breadcrumb">
+				<li><a href="{% url 'Inicio' %}"><i class="fa fa-home"></i> Inicio</a></li>
+				<li><a href="#"><i class="fa fa-list"></i> Listados</a></li>
+				<li class="active"><i class="fa fa-arrow-circle-right"></i> Solicitante</li>
+			</ul>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+
+	<section class="section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0">
+					<div class="panel login-box">
+						<div class="panel-heading">
+							<div class="panel-title text-center">
+								<h4>Consulta de Solicitante</h4>
+							</div>
+						</div>
+						<div class="panel-body p-20">
+
+							<table id="myTable" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<th>Cédula</th>
+										<th>Nombre</th>
+										<th>Apellido</th>
+										<th>Acciones</th>
+									</thead>
+									<tbody>
+										{% for dato in solicitante %}
+										{% if dato.cargo == "Solicitante" %}
+										<tr>
+											<td>{{dato.user.username}}</td>
+											<td>{{dato.p_nombre}}</td>
+											<td>{{dato.p_apellido}}</td>
+											<td>
+												<a href="{% url 'Consulta:VerSolicitante' pk=dato.id %}">Ver</a>
+											</td>
+										</tr>
+										{% endif %}
+										{% endfor %}
+									</tbody>
+								</table>
+
+
+
+
+							</div>
+						</div>
+						<!-- /.panel -->
+
+					</div>
+					<!-- /.col-md-6 col-md-offset-3 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<a href="{% url 'Consulta:SolicitantePDF' %}" class="btn btn-primary btn-block" target="_blank">Generar PDF</a>
+		</section>
+	</div>
+	{% endblock %}
+
+	{% block js %}
+
+	<script>
+		$(document).ready( function () {
+			$('#myTable').DataTable();
+		} );
+	</script>
+	{% endblock %}

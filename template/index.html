@@ -1,0 +1,104 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block leftnav %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+	<!-- CAROUSEL -->
+	<div class="col-md-12 mb-15">
+		<div id="carousel-example-caption" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-caption" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-example-caption" data-slide-to="1"></li>
+				<li data-target="#carousel-example-caption" data-slide-to="2"></li>
+			</ol>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="{% static 'img/slider/Slider-1.png' %}" class="img-responsive">
+					<div class="carousel-caption">
+						<div style="position: relative; z-index: 10;">
+							<div style="	background-color: #FFFFFF; position:absolute; z-index:-1; top:0; left:0; right: 0; bottom:0; opacity:0.5;"></div>
+							<h3 style="color: #D53032; font-size: 30px"><strong>MINISTERIO DE HABITÁT Y VIVIENDA</strong></h3>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img src="{% static 'img/slider/Slider-2.png' %}" class="img-responsive">
+					<div class="carousel-caption">
+						<div style="position: relative; z-index: 10;">
+							<div style="	background-color: #FFFFFF; position:absolute; z-index:-1; top:0; left:0; right: 0; bottom:0; opacity:0.5;"></div>
+							<h3 style="color: #D53032; font-size: 30px"><strong>MINISTERIO DE HABITÁT Y VIVIENDA</strong></h3>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img src="{% static 'img/slider/Slider-3.png' %}" class="img-responsive">
+					<div class="carousel-caption">
+						<div style="position: relative; z-index: 10;">
+							<div style="	background-color: #FFFFFF; position:absolute; z-index:-1; top:0; left:0; right: 0; bottom:0; opacity:0.5;"></div>
+							<h3 style="color: #D53032; font-size: 30px"><strong>MINISTERIO DE HABITÁT Y VIVIENDA</strong></h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /.col-md-12 -->
+	<h1><center>SOBRE NOSOTROS</center></h1>
+	<hr>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<h4><center>MISIÓN</center></h4>
+						<hr>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="tab-content bg-white p-15">
+						<div role="tabpanel" class="tab-pane active" align="justify">
+							Ejercer la rectoría del Sistema Nacional de Vivienda y Hábitat mediante la
+							participación protagónica del poder comunal, a través de la formulación de
+							políticas y planes de desarrollo que permitan la industrialización del sector, el
+							acceso al financiamiento, la asistencia técnica y la supervisión oportuna, orientada
+							hacia la satisfacción progresiva del derecho humano a una vivienda y hábitat
+							dignos que humanicen las relaciones familiares, vecinales y comunitarias.
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.panel -->
+		</div>
+		<!-- /.col-md-6 -->
+		<div class="col-md-6">
+			<div class="panel">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<h4><center>VISIÓN</center></h4>
+						<hr>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="tab-content bg-white p-40">
+						<div role="tabpanel" class="tab-pane active" align="justify">
+							Ser la institución modelo del estado venezolano en el Sistema de Seguridad Social
+							que garantice la participación protagónica de las comunidades, a fin de procurar a
+							las familias la satisfacción progresiva del derecho a vivienda y hábitat dignos,
+							saludables y pertinentes, así como la ocupación racional del territorio.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

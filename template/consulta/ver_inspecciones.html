@@ -1,0 +1,83 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row page-title-div">
+		<div class="col-sm-6">
+			<h2 class="title">Consulta de Inspecciones</h2>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+	<div class="row breadcrumb-div">
+		<div class="col-sm-6">
+			<ul class="breadcrumb">
+				<li><a href="{% url 'Inicio' %}"><i class="fa fa-home"></i> Inicio</a></li>
+				<li><a href="#"><i class="fa fa-list"></i> Listados</a></li>
+				<li><a href="#"><i class="fa fa-arrow-circle-right"></i> Inspecciones</a></li>
+				<li class="active"> {{inspeccion.id}}</li>
+			</ul>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+
+	<section class="section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0">
+					<div class="panel login-box">
+						<div class="panel-heading">
+							<div class="panel-title text-center">
+								<h4>Consulta de Inspecciones</h4>
+							</div>
+						</div>
+						<div class="panel-body p-20">
+
+							<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+								<tbody>
+									<tr>
+										<td><strong>N° DE OFICIO</strong></td>
+										<td>{{inspeccion.}}</td>
+							</tr>
+								</tbody>
+							</table>
+							<br>
+							<center>
+								<a href="{% url 'Consulta:ConsultarInspeccion' %}" class="btn btn-danger">Volver</a>
+								<a href="{% url 'Consulta:inspeccion_pdf' inspeccion.id %}" class="btn btn-primary" target="_blank"><span class="">Imprimir</span></a>
+							</center>
+
+
+
+
+						</div>
+					</div>
+					<!-- /.panel -->
+
+				</div>
+				<!-- /.col-md-6 col-md-offset-3 -->
+			</div>
+			<!-- /.row -->
+		</div>
+	</section>
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script>
+	$(function($) {
+		$('#example').DataTable();
+
+		$('#example2').DataTable( {
+			"scrollY":        "300px",
+			"scrollCollapse": true,
+			"paging":         false
+		} );
+
+		$('#example3').DataTable();
+	});
+</script>
+{% endblock %}

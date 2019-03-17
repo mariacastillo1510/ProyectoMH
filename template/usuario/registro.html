@@ -1,0 +1,284 @@
+{% extends "base/base.html" %}
+
+{% block topnav %}
+{% endblock %}
+{% block leftnav %}
+{% endblock %}
+
+{% block body %}
+<body class="">
+	{% endblock %}
+
+	{% block content %}
+	<div class="login-bg-color bg-black-300">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel login-box">
+					<div class="panel-heading">
+						<div class="panel-title text-center">
+							<h2>SolicitudesDV</h2>
+							<div class="tx-center mg-b-40">Registro de Usuario</div>
+						</div>
+					</div>
+					<div class="panel-body p-20">
+						<form class="p-20" method="POST" data-parsley-validate>{% csrf_token %}
+
+
+
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Nacionalidad <span class="color-danger">*</span></label>
+										<select class="form-control" name="nacionalidad" data-placeholder="Nacionalidad" required data-parsley-error-message="Debe seleccionar una opcion" data-parsley-trigger="keyup">
+											<option label="Nacionalidad"></option>
+											<option value="V">V</option>
+											<option value="E">E</option>
+										</select>
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Cédula <span class="color-danger">*</span></label>
+										<input type="text" class="form-control" name="username" placeholder="Cédula" required data-parsley-length="[8,8]"
+										data-parsley-error-message=" 
+										Debe ingresar solo 8 digitos" data-parsley-trigger="keyup" data-parsley-type="digits" onkeypress=" return Teclas(event, 1);" maxlength="8"> <span class="help-block" > {{ usuarios.username.errors }}</span>
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+							</div>
+							<!-- /.row -->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Contraseña <span class="color-danger">*</span></label>
+										<input type="password" class="form-control" name="password1" placeholder="Contraseña" required data-parsley-length="[8, 16]"
+										data-parsley-error-message="Este campo debe contener mínimo 8 dígitos y máximo 16 dígitos" data-parsley-trigger="keyup" maxlength="16"  onkeypress=" return Teclas(event, 3);">
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Confirmar Contraseña</label>
+										<input type="password" class="form-control" name="password2" placeholder="Confirmar Contraseña" required data-parsley-length="[8, 16]" data-parsley-error-message="Este campo debe contener mínimo 8 dígitos y máximo 16 dígitos" data-parsley-trigger="keyup" maxlength="16"  onkeypress=" return Teclas(event, 3);">
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+							</div>
+							<!-- /.row -->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Primer Nombre <span class="color-danger">*</span></label>
+										<input type="text" class="form-control" name="p_nombre" placeholder="Primer Nombre" required data-parsley-error-message="Este campo debe ser mayor a 2 letras" maxlength="30" onkeypress=" return Teclas(event, 2);">
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Segundo Nombre</label>
+										<input type="text" class="form-control" name="s_nombre" placeholder="Segundo Nombre" required data-parsley-error-message="Este campo debe ser mayor a 2 letras" maxlength="30"  onkeypress=" return Teclas(event, 2);">
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+							</div>
+							<!-- /.row -->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Primer Apellido <span class="color-danger">*</span></label>
+										<input type="text" class="form-control" name="p_apellido" placeholder="Primer Apellido" required data-parsley-error-message="Este campo debe ser mayor a 2 letras" maxlength="30"  onkeypress=" return Teclas(event, 2);">
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Segundo Apellido</label>
+										<input type="text" class="form-control" name="s_apellido" placeholder="Segundo Apellido" required data-parsley-error-message="Este campo debe ser mayor a 2 letras" maxlength="30"  onkeypress=" return Teclas(event, 2);">
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+							</div>
+							<!-- /.row -->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Fecha De nacimiento <span class="color-danger">*</span></label>
+										<input type="date" class="form-control" name="fecha" placeholder="MM/DD/YYYY" required data-parsley-error-message="Debe seleccionar una fecha" data-parsley-trigger="keyup">
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Género <span class="color-danger">*</span></label>
+										<select class="form-control" name="genero" data-placeholder="Género" required data-parsley-error-message="Debe seleccionar una opcion" data-parsley-trigger="keyup">
+											<option label="Género"></option>
+											<option value="Femenino">Femenino</option>
+											<option value="Masculino">Masculino</option>
+										</select>
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+							</div>
+							<!-- /.row -->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Teléfono <span class="color-danger">*</span></label>
+										<input type="text" class="form-control" name="telefono" placeholder="Teléfono" required data-parsley-length="[11, 11]" data-parsley-error-message="Este campo debe contener  11 dígitos" data-parsley-trigger="keyup" data-parsley-type="digits" maxlength="11" onkeypress=" return Teclas(event, 1);">
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Correo Electrónico <span class="color-danger">*</span></label>
+										<input type="text" class="form-control" name="email" placeholder="Correo Electrónico" required data-parsley-type="email" data-parsley-trigger="keyup" data-parsley-error-message="Debe Ingresar un correo electronico correcto"> <span class="help-block">{{ usuarios.email.errors }}</span>
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+							</div>
+							<!-- /.row -->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Estado Civil <span class="color-danger">*</span></label>
+										<select class="form-control" name="esta_civil" data-placeholder="Nacionalidad" required data-parsley-error-message="Debe seleccionar una opcion" data-parsley-trigger="keyup">
+											<option label="Estado Civil"></option>
+											<option value="Casado">Casado</option>
+											<option value="Soltero">Soltero</option>
+											<option value="Viudo">Viudo</option>
+											<option value="Divorciado">Divorciado</option>
+										</select>
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Nivel de Intrucción <span class="color-danger">*</span></label>
+										<select class="form-control" name="nivel_instruc" data-placeholder="Nacionalidad" required data-parsley-error-message="Debe seleccionar una opcion" data-parsley-trigger="keyup">
+											<option label="Nivel de Intrucción"></option>
+											<option value="Primaria">Primaria</option>
+											<option value="Secundaria">Secundaria</option>
+											<option value="Bachiller">Bachiller</option>
+											<option value="Uniersitario">Uniersitario</option>
+										</select>
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+							</div>
+							<!-- /.row -->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Profesión u Oficio</label>
+										<input type="text" class="form-control" name="profesion" placeholder="Profesión u Oficio" required data-parsley-error-message="Indica una profesión" maxlength="30"  onkeypress=" return Teclas(event, 2);">
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Posee Pareja <span class="color-danger">*</span></label>
+										<select class="form-control" name="pareja" data-placeholder="inscrito" required data-parsley-error-message="Debe seleccionar una opcion" data-parsley-trigger="keyup">
+											<option label="Posee Pareja"></option>
+											<option value="Si">Si</option>
+											<option value="No">No</option>
+										</select>
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+							</div>
+							<!-- /.row -->
+
+
+							<!-- /.row -->
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Trabaja <span class="color-danger">*</span></label>
+										<select class="form-control" name="trabaja" data-placeholder="Trabaja" required data-parsley-error-message="Debe seleccionar una opcion" data-parsley-trigger="keyup">
+											<option label="Trabaja"></option>
+											<option value="Si">Si</option>
+											<option value="No">No</option>
+										</select>
+									</div>
+								</div>
+								<!-- /.col-md-12 -->
+							</div>
+							<!-- /.row -->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Inscrito en la FAOV/FAVV <span class="color-danger">*</span></label>
+										<select class="form-control" name="inscrito" data-placeholder="inscrito" required data-parsley-error-message="Debe seleccionar una opcion" data-parsley-trigger="keyup">
+											<option label="Inscrito en la FAOV/FAVV"></option>
+											<option value="Si">Si</option>
+											<option value="No">No</option>
+										</select>
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Posee registro<span class="color-danger">*</span></label>
+										<select class="form-control" name="registro" data-placeholder="inscrito" required data-parsley-error-message="Debe seleccionar una opcion" data-parsley-trigger="keyup">
+											<option label="Posee registro"></option>
+											<option value="G.M.V.V">G.M.V.V</option>
+											<option value="0800 Mi Hogar">0800 Mi Hogar</option>
+										</select>
+									</div>
+								</div>
+								<!-- /.col-md-6 -->
+							</div>
+							<!-- /.row -->
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Ingreso Mensual <span class="color-danger">*</span></label>
+										<input type="text" class="form-control" name="ingre_mensual" placeholder="Ingreso Mensual" required data-parsley-error-message="Debe ingresar una dirección" data-parsley-trigger="keyup">
+									</div>
+								</div>
+								<!-- /.col-md-12 -->
+							</div>
+							<!-- /.row -->
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Dirección <span class="color-danger">*</span></label>
+										<textarea class="form-control" name="direccion" placeholder="Dirección" rows="5" required data-parsley-error-message="Debe ingresar una dirección" data-parsley-trigger="keyup"></textarea>
+									</div>
+								</div>
+								<!-- /.col-md-12 -->
+							</div>
+							<!-- /.row -->
+							<div class="row">
+								<div class="col-md-12">
+									<div class="btn-group pull-right mt-10" role="group">
+										<center>
+											<input type="submit" class="btn bg-black btn-wide" value="Registrar">
+											<a href="{% url 'Inicio' %}">
+												<button type="button" class="btn btn-gray btn-wide">Cancelar</button>
+											</a>
+										</center>
+									</div>
+									<!-- /.btn-group -->
+								</div>
+								<!-- /.col-md-12 -->
+							</div>
+							<hr>
+							<div class="text-center">
+								<a href="{% url 'Usuario:Login' %}" class="form-link"><small class="muted-text">¿Ya tienes una cuenta? Inicia Sesión</small></a>
+							</div>
+							<!-- /.text-center -->
+						</form>
+					</div>
+				</div>
+				<!-- /.panel -->
+				<p class="text-muted text-center"><small>SolicitudesDV © 2019</small></p>
+			</div>
+			<!-- /.col-md-6 col-md-offset-3 -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /. -->
+	{% endblock %}

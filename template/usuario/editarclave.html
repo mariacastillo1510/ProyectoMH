@@ -1,0 +1,97 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row page-title-div">
+		<div class="col-sm-6">
+			<h2 class="title">Editar Contraseña</h2>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+	<div class="row breadcrumb-div">
+		<div class="col-sm-6">
+			<ul class="breadcrumb">
+				<li><a href="{% url 'Inicio' %}"><i class="fa fa-home"></i> Inicio</a></li>
+				<li><a href="#"><i class="fa fa-user"></i> {{user.puser.p_nombre}} {{user.puser.p_apellido}}</a></li>
+				<li class="active"><i class="fa fa-arrow-circle-right"></i> Editar Contaseña</li>
+			</ul>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+	<section class="section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="panel login-box">
+						<div class="panel-heading">
+							<div class="panel-title text-center">
+								<h4>Editar Contraseña</h4>
+							</div>
+						</div>
+						<div class="panel-body p-20">
+							<form class="p-20" method="POST" data-parsley-validate>{% csrf_token %}
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group has-feedback">
+											<label>Contraseña Actual</label>
+											<span class="fa fa-key form-control-feedback"></span>
+											<input name="old_password" type="password" class="form-control" placeholder="Contraseña" required data-parsley-length="[8, 16]"
+											data-parsley-error-message="Este campo debe contener mínimo 8 dígitos y máximo 16 dígitos" data-parsley-trigger="keyup" maxlength="16"  onkeypress=" return Teclas(event, 3);">
+										</div>
+									</div>
+									<!-- /.col-md-12 -->
+								</div>
+								<!-- /.row -->
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group has-feedback">
+											<label>Contraseña Nueva</label>
+											<span class="fa fa-key form-control-feedback"></span>
+											<input name="new_password1" type="password" class="form-control" placeholder="Contraseña" required data-parsley-length="[8, 16]"
+											data-parsley-error-message="Este campo debe contener mínimo 8 dígitos y máximo 16 dígitos" data-parsley-trigger="keyup" maxlength="16"  onkeypress=" return Teclas(event, 3);">
+										</div>
+									</div>
+									<!-- /.col-md-12 -->
+								</div>
+								<!-- /.row -->
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group has-feedback">
+											<label>Confirmar Contraseña Nueva</label>
+											<span class="fa fa-key form-control-feedback"></span>
+											<input name="new_password2" type="password" class="form-control" placeholder="Contraseña" required data-parsley-length="[8, 16]"
+											data-parsley-error-message="Este campo debe contener mínimo 8 dígitos y máximo 16 dígitos" data-parsley-trigger="keyup" maxlength="16"  onkeypress=" return Teclas(event, 3);">
+										</div>
+									</div>
+									<!-- /.col-md-12 -->
+								</div>
+								<!-- /.row -->
+								<div class="row">
+									<div class="col-md-12">
+										<div class="btn-group pull-right mt-10" role="group">
+											<center>
+												<input type="submit" class="btn bg-black btn-wide" value="Editar">
+												<a href="{% url 'Inicio' %}">
+													<button type="button" class="btn btn-gray btn-wide">Cancelar</button>
+												</a>
+											</center>
+										</div>
+										<!-- /.btn-group -->
+									</div>
+									<!-- /.col-md-12 -->
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- /.panel -->
+					
+				</div>
+				<!-- /.col-md-6 col-md-offset-3 -->
+			</div>
+			<!-- /.row -->
+		</div>
+	</section>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row page-title-div">
+		<div class="col-sm-6">
+			<h2 class="title">Consulta de Solicitudes</h2>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+	<div class="row breadcrumb-div">
+		<div class="col-sm-6">
+			<ul class="breadcrumb">
+				<li><a href="{% url 'Inicio' %}"><i class="fa fa-home"></i> Inicio</a></li>
+				<li><a href="#"><i class="fa fa-list"></i> Listados</a></li>
+				<li class="active"><i class="fa fa-arrow-circle-right"></i> Solicitudes</li>
+			</ul>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+
+	<section class="section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0">
+					<div class="panel login-box">
+						<div class="panel-heading">
+							<div class="panel-title text-center">
+								<h4>Consulta de Solicitudes</h4>
+							</div>
+						</div>
+						<div class="panel-body p-20">
+
+							<table id="myTable" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<th>N° Oficio</th>
+										<th>Solicitante</th>
+										<th>Fecha</th>
+										<th>Acciones</th>
+									</thead>
+									<tbody>
+										{% for dato in solicitudes %}
+										{% if dato.numero_de_oficio != None %}
+										<tr>
+											<td>{{dato.numero_de_oficio}}</td>
+											<td>{{dato.solicitante.user.username}}</td>
+											<td>{{dato.fecha}}</td>
+											<td>
+												<a href="{% url 'Consulta:VerSolicitudes' pk=dato.id %}">Ver</a>
+												/
+												<a href="{% url 'Registro:ESolicitudes' pk=dato.id %}">Editar</a>
+											</td>
+										</tr>
+										{% endif %}
+										{% endfor %}
+									</tbody>
+								</table>
+
+
+
+
+							</div>
+						</div>
+						<!-- /.panel -->
+
+					</div>
+					<!-- /.col-md-6 col-md-offset-3 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<a href="{% url 'Consulta:SolicitudesPDF' %}" class="btn btn-primary btn-block" target="_blank">Generar PDF</a>
+		</section>
+	</div>
+	{% endblock %}
+
+	{% block js %}
+
+	<script>
+		$(document).ready( function () {
+			$('#myTable').DataTable();
+		} );
+	</script>
+	{% endblock %}

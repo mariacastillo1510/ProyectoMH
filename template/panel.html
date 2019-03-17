@@ -1,0 +1,72 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row page-title-div">
+		<div class="col-sm-9">
+			<h2 class="title">Bienvenido
+			{{user.puser.p_nombre}} {{user.puser.p_apellido}}</h2>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+	<div class="row breadcrumb-div">
+		<div class="col-sm-9">
+			<ul class="breadcrumb">
+				<li><a href="{% url 'Inicio' %}"><i class="fa fa-home"></i> Inicio</a></li>
+				<li><a href="#"><i class="fa fa-file-signature"></i> Solicitudes</a></li>
+				<li class="active"><i class="fa fa-arrow-circle-right"></i> Citas</li>
+				<li class="active"><i class="fa fa-arrow-circle-right"></i> Inspecciones</li>
+			</ul>
+		</div>
+		<!-- /.col-sm-6 -->
+</div>
+<section class="section">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+				{% with total=solicitantes.count %}
+				<a class="dashboard-stat bg-danger" href="{% url 'Consulta:ConsultarSolicitante' %}">
+					<span class="number counter">{{total}}</span>
+					<span class="name">Solicitante{{total|pluralize}}</span>
+					<span class="bg-icon"><i class="fa fa-user"></i></span>
+					{% endwith %}
+				</a>
+				<!-- /.dashboard-stat -->
+			</div>
+			<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+				<a class="dashboard-stat bg-primary" href="#">
+					<span class="number counter">0</span>
+					<span class="name">Solicitudes</span>
+					<span class="bg-icon"><i class="fa fa-file-signature"></i></span>
+				</a>
+				<!-- /.dashboard-stat -->
+			</div>
+			<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
+		
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+				<a class="dashboard-stat bg-warning" href="#">
+					<span class="number counter">0</span>
+					<span class="name">Cita</span>
+					<span class="bg-icon"><i class="fa fa-clipboard-list"></i></span>
+				</a>
+				<!-- /.dashboard-stat -->
+			</div>
+			<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+				<a class="dashboard-stat bg-success" href="#">
+					<span class="number counter">0</span>
+					<span class="name">Inspecciones</span>
+					<span class="bg-icon"><i class="fa fa-copy"></i></span>
+				</a>
+				<!-- /.dashboard-stat -->
+			</div>
+			<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.container-fluid -->
+</section>
+<!-- /.section -->
+{% endblock %}

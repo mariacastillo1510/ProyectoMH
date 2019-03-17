@@ -1,0 +1,110 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row page-title-div">
+		<div class="col-sm-6">
+			<h2 class="title">Ediciones de Cita</h2>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+	<div class="row breadcrumb-div">
+		<div class="col-sm-6">
+			<ul class="breadcrumb">
+				<li><a href="{% url 'Inicio' %}"><i class="fa fa-home"></i> Inicio</a></li>
+				<li><a href="#"><i class="fa fa-list"></i> Listados</a></li>
+				<li><a href="#"><i class="fa fa-arrow-circle-right"></i> Cita</a></li>
+				<li><a href="#"><i class="fa fa-arrow-circle-right"></i> {{vcita.solicitud.numero_de_oficio}}</a></li>
+				<li class="active"> Editar</li>
+			</ul>
+		</div>
+		<!-- /.col-sm-6 -->
+	</div>
+	<!-- /.row -->
+
+	<section class="section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="panel login-box">
+						<div class="panel-heading">
+							<div class="panel-title text-center">
+								<h4>Registro de Cita</h4>
+							</div>
+						</div>
+						<div class="panel-body p-20">
+							<form class="p-20" method="POST" data-parsley-validate>{% csrf_token %}
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label>Solicitud <span class="color-danger">*</span></label>
+											<select name="solicitud" class="form-control select2" disabled data-placeholder="Código">
+												<option>{{vcita.solicitud}}</option>
+											</select>
+										</div>
+										<span style="display: none">{{ecita.solicitud}}</span>
+									</div>
+									<!-- /.col-md-12 -->	
+								</div>
+								<!-- /.row -->
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label>Fecha <span class="color-danger">*</span></label>
+											<input required data-parsley-error-message="Debe seleccionar una fecha" data-parsley-trigger="keyup" type="date" class="form-control" name="fecha" placeholder="Fecha" value="{{vcita.fecha}}">
+										</div>
+									</div>
+									<!-- /.col-md-12 -->
+								</div>
+								<!-- /.row -->
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label>Hora <span class="color-danger">*</span></label>
+											<input type="time" class="form-control" name="hora" placeholder="Hora" value="{{vcita.hora}}" required data-parsley-error-message="Debe seleccionar una hora" data-parsley-trigger="keyup">
+										</div>
+									</div>
+									<!-- /.col-md-12 -->
+								</div>
+								<!-- /.row -->
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label>Inspector <span class="color-danger">*</span>
+											</label>
+											<select name="trabajador" class="form-control select2"{{ecita.trabajador}}</span>
+											</select>
+										</div>
+										<span style="display: none">{{ecita.trabajador}}</span>
+									</div>
+									<!-- /.col-md-12 -->
+								</div>
+								<!-- /.row -->
+								<div class="row">
+									<div class="col-md-12">
+										<div class="btn-group pull-right mt-10" role="group">
+											<center>
+												<input type="submit" class="btn bg-black btn-wide" value="Registrar">
+												<a href="{% url 'Inicio' %}">
+													<button type="button" class="btn btn-gray btn-wide">Cancelar</button>
+												</a>
+											</center>
+										</div>
+										<!-- /.btn-group -->
+									</div>
+									<!-- /.col-md-12 -->
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- /.panel -->
+					
+				</div>
+				<!-- /.col-md-6 col-md-offset-3 -->
+			</div>
+			<!-- /.row -->
+		</div>
+	</section>
+</div>
+{% endblock %}
